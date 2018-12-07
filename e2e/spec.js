@@ -22,7 +22,7 @@ describe('Make fun', () => {
     browser.restart();
   });
 
-  for (var x = 0; x < 100; x++) {
+  for (var x = 0; x < process.env.FUN_MULTIPLIER; x++) {
     it('Vote ' + x, testAsync(async () => {
       await vote();
     }));
