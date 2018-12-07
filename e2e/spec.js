@@ -21,6 +21,10 @@ describe('Make fun', () => {
   afterEach(() => {
     browser.restart();
   });
+  
+  it('Test vote', testAsync(async () => {
+    await vote();
+  }));
 
   for (var x = 0; x < Number(process.env.FUN_MULTIPLIER); x++) {
     it('Vote ' + x, testAsync(async () => {
