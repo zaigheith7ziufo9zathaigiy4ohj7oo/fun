@@ -1,0 +1,38 @@
+version: "2"
+services:
+  selenium-hub:
+    image: selenium/hub:2.53.0
+    ports:
+      - "4444:4444"
+    environment:
+      GRID_TIMEOUT: 10000
+
+  firefox-debug:
+    container_name: "firefox-debug"
+    image: selenium/node-firefox-debug:2.53.0
+    environment:
+      HUB_PORT_4444_TCP_ADDR: "selenium-hub"
+      HUB_PORT_4444_TCP_PORT: "4444"
+    depends_on:
+      - selenium-hub
+
+  chrome-debug:
+    container_name: "chrome-debug"
+    image: selenium/node-chrome-debug:2.53.0
+    environment:
+      HUB_PORT_4444_TCP_ADDR: "selenium-hub"
+      HUB_PORT_4444_TCP_PORT: "4444"
+    depends_on:
+      - selenium-hub
+
+  e2e:
+    container_name: e2e
+    image: node:8
+    ports:
+      - "9001:9000"
+    working_dir: /tests
+    depends_on:
+      - selenium-hub
+      - chrome-debug
+      - firefox-debug
+    command: ["bash", "-euc", "npm i protractor axios && ./node_modules/.bin/protractor"]
