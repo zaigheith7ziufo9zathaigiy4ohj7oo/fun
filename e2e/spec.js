@@ -8,6 +8,8 @@ function testAsync(specFunction) {
   };
 }
 
+console.log('process.env.FUN_URL:', process.env.FUN_URL)
+
 describe('Make fun', () => {
   async function vote() {
     const driver = browser.driver;
