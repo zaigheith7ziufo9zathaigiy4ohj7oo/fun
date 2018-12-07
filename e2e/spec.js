@@ -11,7 +11,7 @@ function testAsync(specFunction) {
 console.log('process.env.FUN_URL:', process.env.FUN_URL)
 
 describe('Make fun', () => {
-  async function vote() {
+  async function makeFun() {
     const driver = browser.driver;
     driver.ignoreSynchronization = true;
     await driver.get(process.env.FUN_URL);
@@ -24,13 +24,9 @@ describe('Make fun', () => {
     browser.restart();
   });
   
-  it('Test vote', testAsync(async () => {
-    await vote();
-  }));
-
   for (var x = 0; x < Number(process.env.FUN_MULTIPLIER); x++) {
-    it('Vote ' + x, testAsync(async () => {
-      await vote();
+    it('Fun ' + x, testAsync(async () => {
+      await makeFun();
     }));
   }
 });
