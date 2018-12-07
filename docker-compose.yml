@@ -29,7 +29,10 @@ services:
     build: .
     ports:
       - "9001:9000"
-    working_dir: /tests
+    environment:
+      FUN_URL: "${FUN_URL}"
+      FUN_ID: "${FUN_ID}"
+      FUN_MULTIPLIER: "${FUN_MULTIPLIER}"
     depends_on:
       - selenium-hub
       - chrome-debug
