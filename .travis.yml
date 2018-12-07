@@ -1,4 +1,10 @@
 language: bash
 services:
   - docker
+env:
+  matrix:
+    - TEST_A=1 TEST_B=1
+    - TEST_A=2 TEST_B=1
+    - TEST_A=1 TEST_B=2
+    - TEST_A=2 TEST_B=2
 script: docker-compose run e2e
