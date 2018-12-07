@@ -2,9 +2,9 @@ language: bash
 services:
   - docker
 env:
-  matrix:
-    - TEST_A=1 TEST_B=1
-    - TEST_A=2 TEST_B=1
-    - TEST_A=1 TEST_B=2
-    - TEST_A=2 TEST_B=2
+  - CONFIG=1
+  - CONFIG=2
+  - CONFIG=3
+  - CONFIG=4
+  - CONFIG=5
 script: docker-compose run e2e
