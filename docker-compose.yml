@@ -35,4 +35,4 @@ services:
       - selenium-hub
       - chrome-debug
       - firefox-debug
-    command: ["bash", "-euc", "npm i protractor axios && ./node_modules/.bin/protractor"]
+    command: ["bash", "-euc", "npm i protractor && ./node_modules/.bin/protractor"]
